@@ -1,6 +1,6 @@
 
 
-const Navbar = () => {
+const UpdateCoffee = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default UpdateCoffee;
