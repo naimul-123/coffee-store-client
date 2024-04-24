@@ -5,7 +5,7 @@ import { MdDelete, MdEdit } from 'react-icons/md';
 
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
 	const {
 		_id,
 		coffeeName,
@@ -17,8 +17,8 @@ const CoffeeCard = ({ coffee }) => {
 		photoURL,
 	} = coffee;
 
-	const handleDelete = (id) => {
-		console.log(id);
+	const handleDelete = () => {
+		
 		Swal.fire({
 			title: 'Are you sure?',
 			text: "You won't be able to revert this!",
@@ -36,13 +36,17 @@ const CoffeeCard = ({ coffee }) => {
 				})
 					.then((res) => res.json())
 					.then((data) => {
-						console.log(data);
-						if (data.deletedCount>0) {
+						
+						if (data.deletedCount > 0) {
+							
 							Swal.fire({
 								title: 'Deleted!',
 								text: 'Your coffee has been deleted.',
 								icon: 'success',
 							});
+
+							const remainingCoffees = coffees.filter((cof) => cof._id !== _id)
+							setCoffees(remainingCoffees)
 						}
 					});
 			}
@@ -79,7 +83,7 @@ const CoffeeCard = ({ coffee }) => {
 					<MdEdit />
 				</Link>
 				<button
-					onClick={() => handleDelete(_id)}
+					onClick={handleDelete}
 					className='btn btn-sm btn-square bg-[#EA4744] text-white'>
 					<MdDelete />
 				</button>

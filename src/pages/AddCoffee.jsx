@@ -1,3 +1,5 @@
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
@@ -38,12 +40,18 @@ const AddCoffee = () => {
 					});
 					form.reset();
 				}
-				console.log(data);
+				
 			});
 	};
 
 	return (
 		<div className=' max-w-screen-lg p-12 mx-auto bg-[#F4F3F0]'>
+			<Link to='/'>
+				<FaArrowLeftLong className='inline-flex items-center' />{' '}
+				<span className='font-rancho text-[#374151] text-3xl'>
+					Back to Home
+				</span>
+			</Link>
 			<div className='text-center max-w-3/5 w-full'>
 				<h1 className='text-5xl font-rancho'>Add New Coffee</h1>
 				<p className='py-6 font-raleway'>

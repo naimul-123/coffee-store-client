@@ -1,8 +1,19 @@
-import { useLoaderData } from 'react-router-dom';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const UpdateCoffee = () => {
     const coffee = useLoaderData();
+    const {
+		_id,
+		coffeeName,
+		chef,
+		supplier,
+		taste,
+		catagory,
+		details,
+		photoURL,
+	} = coffee;
     	const handleUpdateCoffee = (e) => {
 		e.preventDefault();
 		const form = e.target;
@@ -22,7 +33,7 @@ const UpdateCoffee = () => {
 			details,
 			photoURL,
 		};
-		fetch(`http://localhost:3000/coffee`, {
+		fetch(`http://localhost:3000/coffee/${_id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json',
@@ -34,18 +45,24 @@ const UpdateCoffee = () => {
 				if (data.acknowledged) {
 					Swal.fire({
 						title: 'Success!',
-						text: 'Coffee added successfully!',
+						text: 'Coffee updated successfully!',
 						icon: 'success',
 						confirmButtonText: 'OK',
 					});
 					form.reset();
 				}
-				console.log(data);
+				
 			});
 	};
 	console.log(coffee);
 	return (
-		<div className=' max-w-screen-lg p-12 mx-auto bg-[#F4F3F0]'>
+        <div className=' max-w-screen-lg p-12 mx-auto bg-[#F4F3F0]'>
+            <Link to='/'>
+				<FaArrowLeftLong className='inline-flex' />{' '}
+				<span className='font-rancho text-[#374151] text-3xl'>
+					Back to Home
+				</span>
+			</Link>
 			<div className='text-center max-w-3/5 w-full'>
 				<h1 className='text-5xl font-rancho'>Add New Coffee</h1>
 				<p className='py-6 font-raleway'>
@@ -66,7 +83,7 @@ const UpdateCoffee = () => {
 							</label>
 							<input
 								type='text'
-								placeholder='Enter coffee name'
+								defaultValue={coffeeName}
 								name='coffeeName'
 								className='input input-bordered'
 								required
@@ -79,7 +96,7 @@ const UpdateCoffee = () => {
 							<input
 								type='text'
 								name='chef'
-								placeholder='Enter coffee chef'
+								defaultValue={chef}
 								className='input input-bordered'
 								required
 							/>
@@ -91,7 +108,7 @@ const UpdateCoffee = () => {
 							<input
 								type='text'
 								name='supplier'
-								placeholder='Enter coffee supplier'
+								defaultValue={supplier}
 								className='input input-bordered'
 								required
 							/>
@@ -103,7 +120,7 @@ const UpdateCoffee = () => {
 							<input
 								type='text'
 								name='taste'
-								placeholder='Enter coffee taste'
+								defaultValue={taste}
 								className='input input-bordered'
 								required
 							/>
@@ -115,7 +132,7 @@ const UpdateCoffee = () => {
 							<input
 								type='text'
 								name='catagory'
-								placeholder='Enter coffee catagory'
+								defaultValue={catagory}
 								className='input input-bordered'
 								required
 							/>
@@ -127,7 +144,7 @@ const UpdateCoffee = () => {
 							<input
 								type='text'
 								name='details'
-								placeholder='Enter coffee details'
+								defaultValue={details}
 								className='input input-bordered'
 								required
 							/>
@@ -139,14 +156,14 @@ const UpdateCoffee = () => {
 							<input
 								type='text'
 								name='photoURL'
-								placeholder='Enter coffee photoURL'
+								defaultValue={photoURL}
 								className='input input-bordered'
 								required
 							/>
 						</div>
 						<div className='form-control mt-6 col-span-2'>
 							<button className='btn bg-[#D2B48C] border-[#331A15] font-rancho'>
-								Add Coffee
+								Update Coffee
 							</button>
 						</div>
 					</div>
