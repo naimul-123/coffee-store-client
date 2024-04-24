@@ -48,6 +48,7 @@ const CoffeeCard = ({ coffee }) => {
 			}
 		});
 	};
+
 	return (
 		<div className='flex p-8  bg-[#F5F4F1] shadow-xl items-center gap-6'>
 			<figure className='max-w-48'>
@@ -73,7 +74,7 @@ const CoffeeCard = ({ coffee }) => {
 					<FaEye />
 				</Link>
 				<Link
-					to={`/editcoffee/${_id}`}
+					to={`/updatecoffee/${_id}`}
 					className='btn btn-sm btn-square bg-[#3C393B] text-white'>
 					<MdEdit />
 				</Link>
