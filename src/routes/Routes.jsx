@@ -3,6 +3,7 @@ import App from '../App';
 import AddCoffee from '../pages/AddCoffee';
 import UpdateCoffee from '../pages/UpdateCoffee';
 import Home from '../pages/Home';
+import ShowCoffee from '../pages/ShowCoffee';
 const routes = createBrowserRouter([
 	{
 		path: '/',
@@ -17,6 +18,11 @@ const routes = createBrowserRouter([
 			{
 				path: '/addcoffee',
 				element: <AddCoffee />,
+			},
+			{
+				path: '/showcoffee',
+				element: <ShowCoffee />,
+				loader: ({params})=> fetch(`http://localhost:3000/coffee/${params.id}`)
 			},
 			{
 				path: '/updatecoffee',

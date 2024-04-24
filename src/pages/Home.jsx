@@ -12,14 +12,7 @@ const Home = () => {
             <Hero />
             <Features />
             <Coffees coffees={coffees} />
-			<div className='grid grid-cols-3 gap-3'>
-				{coffees.map((coffee) => (
-					<CoffeeCard
-						key={coffee._id}
-						coffee={coffee}
-					/>
-				))}
-			</div>
+
 		</div>
 	);
 };
