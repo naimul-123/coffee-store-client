@@ -3,8 +3,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const UpdateCoffee = () => {
-    const coffee = useLoaderData();
-    const {
+	const coffee = useLoaderData();
+	const {
 		_id,
 		coffeeName,
 		chef,
@@ -14,7 +14,7 @@ const UpdateCoffee = () => {
 		details,
 		photoURL,
 	} = coffee;
-    	const handleUpdateCoffee = (e) => {
+	const handleUpdateCoffee = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const coffeeName = form.coffeeName.value;
@@ -33,7 +33,7 @@ const UpdateCoffee = () => {
 			details,
 			photoURL,
 		};
-		fetch(`http://localhost:3000/coffee/${_id}`, {
+		fetch(`https://coffee-store-server-dx149rv0g-naimuls-projects-ee8c232f.vercel.app/coffee/${_id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json',
@@ -51,13 +51,13 @@ const UpdateCoffee = () => {
 					});
 					form.reset();
 				}
-				
+
 			});
 	};
 	console.log(coffee);
 	return (
-        <div className=' max-w-screen-lg p-12 mx-auto bg-[#F4F3F0]'>
-            <Link to='/'>
+		<div className=' max-w-screen-lg p-12 mx-auto bg-[#F4F3F0]'>
+			<Link to='/'>
 				<FaArrowLeftLong className='inline-flex' />{' '}
 				<span className='font-rancho text-[#374151] text-3xl'>
 					Back to Home

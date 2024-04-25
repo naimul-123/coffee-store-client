@@ -18,7 +18,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
 	} = coffee;
 
 	const handleDelete = () => {
-		
+
 		Swal.fire({
 			title: 'Are you sure?',
 			text: "You won't be able to revert this!",
@@ -29,16 +29,16 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
 			confirmButtonText: 'Yes, delete it!',
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:3000/coffee/${_id}`, {
+				fetch(`https://coffee-store-server-dx149rv0g-naimuls-projects-ee8c232f.vercel.app/coffee/${_id}`, {
 					method: "DELETE",
 
-					
+
 				})
 					.then((res) => res.json())
 					.then((data) => {
-						
+
 						if (data.deletedCount > 0) {
-							
+
 							Swal.fire({
 								title: 'Deleted!',
 								text: 'Your coffee has been deleted.',

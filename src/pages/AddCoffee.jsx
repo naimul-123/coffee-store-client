@@ -22,7 +22,7 @@ const AddCoffee = () => {
 			details,
 			photoURL,
 		};
-		fetch(`http://localhost:3000/coffee`, {
+		fetch(`https://coffee-store-server-dx149rv0g-naimuls-projects-ee8c232f.vercel.app/coffee`, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',
@@ -40,7 +40,7 @@ const AddCoffee = () => {
 					});
 					form.reset();
 				}
-				
+
 			});
 	};
 
